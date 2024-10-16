@@ -1,0 +1,65 @@
+
+/* Style untuk main content */
+.main-content {
+    padding: 20px 0;
+}
+
+.card {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Styling untuk tombol tambah buku */
+.btn-add {
+    position: fixed;
+    top: 350px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+    background-color: #0056b3;
+}
+
+/* Styling untuk ikon tambah */
+.fa-plus {
+    margin-right: 5px;
+}
+
+#addBookFormWrapper {
+    z-index: 1000;
+}
+
+
+
+

@@ -1,0 +1,23 @@
+/* bookmarkstyle.css */
+
+/* Style untuk layout card di daftar bookmark */
+.card {
+    height: 100%;
+}
+
+.card img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

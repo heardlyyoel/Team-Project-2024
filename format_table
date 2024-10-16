@@ -1,0 +1,440 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 03, 2024 at 05:21 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `bibliotukar`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account`
+--
+
+CREATE TABLE `account` (
+  `account_id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone` varchar(15) DEFAULT NULL,
+  `location` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`account_id`, `username`, `password`, `phone`, `location`) VALUES
+(1, 'yoel', 'yoel123', '082180505787', 'NBH-President University'),
+(2, 'mico', 'mico123', '0821892773299', 'SBH-President Univesity'),
+(3, 'ilham', 'ilham123', '0823271230281', 'SBH-H102'),
+(4, 'eunice', 'eunice123', '08326917282', 'NBH-A2 13 07'),
+(5, 'nadya', 'nadya123', '086352711232', 'NBH-A2 11 23'),
+(6, 'cola', 'cola123', '0821187231', 'SBH G192'),
+(7, 'examplecontoh', '123123', '086876875855', 'NBH-A2 11 24'),
+(8, 'yoel', '123123', '5656', 'SBH-H102'),
+(9, 'ardana', 'ardana123', '08423412312', 'asdasdwadsdwasdwdad');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `author`
+--
+
+CREATE TABLE `author` (
+  `author_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `biography` text DEFAULT NULL,
+  `nationality` varchar(50) DEFAULT NULL,
+  `birthday` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `author`
+--
+
+INSERT INTO `author` (`author_id`, `name`, `biography`, `nationality`, `birthday`) VALUES
+(1, 'Harper Lee', ' Harper Lee was an American author famous for her iconic work, \"To Kill a Mockingbird.\" She was born in Monroeville, Alabama, and was often described as a very private individual who rarely gave public interviews. \"To Kill a Mockingbird\" is her only published novel during her lifetime, but it won the Pulitzer Prize and became one of the most influential American literary works.', 'American', '1926-04-28'),
+(2, 'J.R.R. Tolkien', ' J.R.R. Tolkien was an English professor, writer, and philologist known as the creator of the legendary fantasy world, Middle-earth, where stories like \"The Hobbit\" and \"The Lord of the Rings\" take place. He was born in Bloemfontein, Orange Free State (now part of South Africa). Tolkien was also known for his work in the field of language studies, particularly Anglo-Saxon and classical linguistics.', ' British', '1892-01-03'),
+(3, 'Yuval Noah Harari', 'Yuval Noah Harari is an Israeli historian and professor known for his deep insights into human history and its future developments. He was born in Kiryat Ata, Israel. Harari gained international fame with his book \"Sapiens: A Brief History of Humankind,\" which explores human evolution from prehistoric times to the modern era.', 'Israeli', '1976-02-24'),
+(4, 'Andy Weir', 'Andy Weir is an American science fiction writer known for his novel \"The Martian,\" which he initially self-published online before it became a commercially published book and later adapted into a film. He was born in Davis, California. Before becoming a full-time writer, Weir worked as a software programmer for the computer industry.', 'American', '1972-06-12'),
+(5, ' F. Scott Fitzgerald', NULL, NULL, NULL),
+(6, 'Virginia Woolf', NULL, NULL, NULL),
+(7, 'Aldous Huxley', NULL, NULL, NULL),
+(8, ' J.D. Salinger', NULL, NULL, NULL),
+(9, 'Toni Morrison', NULL, NULL, NULL),
+(10, 'Cormac McCarthy', NULL, NULL, NULL),
+(11, 'Oscar Wilde', NULL, NULL, NULL),
+(12, 'Mary Shelley', NULL, NULL, NULL),
+(13, 'Gabriel García Márquez', NULL, NULL, NULL),
+(14, ' Emily Brontë', NULL, NULL, NULL),
+(15, 'yoel', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `available`
+--
+
+CREATE TABLE `available` (
+  `available_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `available`
+--
+
+INSERT INTO `available` (`available_id`, `name`) VALUES
+(0, 'unavailable'),
+(1, 'available');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book`
+--
+
+CREATE TABLE `book` (
+  `book_id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `author_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `category` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`book_id`, `title`, `author_id`, `description`, `category`) VALUES
+(1, 'Test Lagi', 1, 'This classic novel follows the journey of a young girl named Scout Finch in a small town in Alabama during the Great Depression. The story delves into deep-seated racial and moral issues through the experiences of Scout and her family.\r\nGenre: Literary Fiction / Drama', 1),
+(2, 'The Hobbi', 2, 'An epic adventure following the journey of a hobbit named Bilbo Baggins, recruited by the wizard Gandalf and a group of dwarves to reclaim their homeland from the dragon Smaug. This adventure takes Bilbo to lands he never imagined before.', 2),
+(3, 'Sapiens: A Brief History of Humankind', 3, ' This book presents the history of humanity from the beginning of evolution to modern civilization. Harari explores various aspects of human life, including religion, politics, and technology, offering a unique and informative perspective.', 8),
+(4, 'The Martian', 4, 'When astronaut Mark Watney is stranded on Mars after a failed mission, he must use his knowledge and skills to survive on the unforgiving planet. This book blends elements of science fiction with thrilling tension and distinctive humor.\r\nGenre: Science Fiction / Adventure', 7),
+(5, 'The Great Gatsby', 5, 'asfasfasasasf', 1),
+(6, 'The Great Gatsby', 5, 'An American classic novel that explores the lives of the wealthy during the Roaring Twenties era. The story revolves around Jay Gatsby, a mysterious millionaire obsessed with a woman named Daisy Buchanan, and depicts the failure of the American Dream amidst social and moral tensions.', 1),
+(8, 'Brave New World', 7, 'A dystopian novel set in a futuristic society where people are engineered and conditioned for specific roles. The story follows Bernard Marx and his disillusionment with the rigid social order, leading to a journey of self-discovery and rebellion.', 4),
+(9, 'The Catcher in the Rye', 8, 'A coming-of-age novel that follows the misadventures of Holden Caulfield, a disillusioned teenager navigating the complexities of adolescence and society. The novel is known for its exploration of teenage angst and alienation.', 9),
+(10, 'Beloved', 9, 'Sethe, an escaped slave, is haunted by the memory of her deceased daughter, Beloved, in this powerful novel that delves into the trauma of slavery and its lasting effects on individuals and families.', 8),
+(11, 'The Road', 10, 'A post-apocalyptic novel that follows a father and his young son as they journey across a ravaged landscape in search of safety and salvation. The novel explores themes of survival, love, and the human spirit in the face of adversity.', 7),
+(12, 'The Picture of Dorian Gray', 11, 'A Gothic novel that tells the story of Dorian Gray, a young man who remains youthful while his portrait ages, reflecting his moral corruption. The novel explores themes of vanity, hedonism, and the consequences of moral decay', 12),
+(13, 'Frankenstein', 12, 'A classic Gothic novel that tells the story of Victor Frankenstein, a young scientist who creates a sentient creature through an unorthodox experiment. The novel explores themes of ambition, responsibility, and the consequences of playing god.', 10),
+(14, 'One Hundred Years of Solitude', 13, 'A landmark novel in magical realism that chronicles the rise and fall of the Buendía family in the fictional town of Macondo. The novel blends elements of fantasy and reality to explore themes of time, memory, and the cyclical nature of history.', 6),
+(15, 'Wuthering Heights', 14, 'A passionate tale of love and revenge set on the windswept moors of Yorkshire. The novel follows the intense relationship between Heathcliff and Catherine Earnshaw, and the destructive effects of their obsession with each other.', 14),
+(16, 'Database', 15, 'good daata base', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookcategory`
+--
+
+CREATE TABLE `bookcategory` (
+  `bookcategory_id` bigint(20) UNSIGNED NOT NULL,
+  `book_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `category_id` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bookcategory`
+--
+
+INSERT INTO `bookcategory` (`bookcategory_id`, `book_id`, `category_id`) VALUES
+(1, 1, 1),
+(2, 6, 1),
+(3, 2, 2),
+(4, 3, 8),
+(5, 10, 8),
+(6, 4, 7),
+(7, 11, 7),
+(9, 13, 10),
+(10, 14, 14),
+(11, 15, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookmark`
+--
+
+CREATE TABLE `bookmark` (
+  `account_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `book_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `date_added` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bookmark`
+--
+
+INSERT INTO `bookmark` (`account_id`, `book_id`, `date_added`) VALUES
+(1, 14, '2024-05-04'),
+(1, 16, '2024-05-06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `name`) VALUES
+(1, 'Drama'),
+(2, 'Fantasy'),
+(3, 'Romance'),
+(4, ' Horror'),
+(5, 'Mystery'),
+(6, 'Thriller'),
+(7, 'Adventure'),
+(8, 'History'),
+(9, 'Biography'),
+(10, 'Non-fiction'),
+(11, 'Short Stories'),
+(12, 'Poetry'),
+(13, 'Horror'),
+(14, 'Comedy'),
+(15, 'Young Adult'),
+(16, 'Business'),
+(17, 'Self-Help'),
+(18, 'Art and Photography');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `collection`
+--
+
+CREATE TABLE `collection` (
+  `collection_id` bigint(20) UNSIGNED NOT NULL,
+  `book_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `owner` bigint(20) UNSIGNED DEFAULT NULL,
+  `available` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `collection`
+--
+
+INSERT INTO `collection` (`collection_id`, `book_id`, `owner`, `available`) VALUES
+(3, 3, 1, 1),
+(4, 4, 1, 1),
+(5, 6, 2, 0),
+(7, 8, 1, 1),
+(8, 9, 1, 0),
+(9, 10, 6, 1),
+(10, 11, 6, 1),
+(11, 12, 6, 1),
+(12, 13, 2, 1),
+(13, 14, 4, 1),
+(14, 15, 4, 1),
+(15, 16, 7, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rent`
+--
+
+CREATE TABLE `rent` (
+  `rent_id` bigint(20) UNSIGNED NOT NULL,
+  `id_account_own` bigint(20) UNSIGNED DEFAULT NULL,
+  `book_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `id_account` bigint(20) UNSIGNED DEFAULT NULL,
+  `rent_date` date DEFAULT NULL,
+  `return_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rent`
+--
+
+INSERT INTO `rent` (`rent_id`, `id_account_own`, `book_id`, `id_account`, `rent_date`, `return_date`) VALUES
+(1, 5, 1, 1, '2024-05-17', '2024-05-31'),
+(2, 2, 6, 1, '2024-05-06', '2024-05-31'),
+(3, 1, 9, 4, '2024-05-15', '2024-05-31');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`account_id`);
+
+--
+-- Indexes for table `author`
+--
+ALTER TABLE `author`
+  ADD PRIMARY KEY (`author_id`);
+
+--
+-- Indexes for table `available`
+--
+ALTER TABLE `available`
+  ADD PRIMARY KEY (`available_id`);
+
+--
+-- Indexes for table `book`
+--
+ALTER TABLE `book`
+  ADD PRIMARY KEY (`book_id`),
+  ADD KEY `author_id` (`author_id`),
+  ADD KEY `category` (`category`);
+
+--
+-- Indexes for table `bookcategory`
+--
+ALTER TABLE `bookcategory`
+  ADD PRIMARY KEY (`bookcategory_id`),
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `category_id` (`category_id`);
+
+--
+-- Indexes for table `bookmark`
+--
+ALTER TABLE `bookmark`
+  ADD KEY `account_id` (`account_id`),
+  ADD KEY `book_id` (`book_id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `collection`
+--
+ALTER TABLE `collection`
+  ADD PRIMARY KEY (`collection_id`),
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `fk_available` (`available`),
+  ADD KEY `fk_owner` (`owner`);
+
+--
+-- Indexes for table `rent`
+--
+ALTER TABLE `rent`
+  ADD PRIMARY KEY (`rent_id`),
+  ADD KEY `id_account` (`id_account_own`),
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `id_account_wishlist` (`id_account`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `account`
+--
+ALTER TABLE `account`
+  MODIFY `account_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `author`
+--
+ALTER TABLE `author`
+  MODIFY `author_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `book`
+--
+ALTER TABLE `book`
+  MODIFY `book_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `bookcategory`
+--
+ALTER TABLE `bookcategory`
+  MODIFY `bookcategory_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `category_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `collection`
+--
+ALTER TABLE `collection`
+  MODIFY `collection_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `rent`
+--
+ALTER TABLE `rent`
+  MODIFY `rent_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `book`
+--
+ALTER TABLE `book`
+  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`author_id`),
+  ADD CONSTRAINT `book_ibfk_4` FOREIGN KEY (`category`) REFERENCES `category` (`category_id`);
+
+--
+-- Constraints for table `bookcategory`
+--
+ALTER TABLE `bookcategory`
+  ADD CONSTRAINT `fk_bookcategory_book_id` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_bookcategory_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `bookmark`
+--
+ALTER TABLE `bookmark`
+  ADD CONSTRAINT `bookmark_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`),
+  ADD CONSTRAINT `bookmark_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
+
+--
+-- Constraints for table `collection`
+--
+ALTER TABLE `collection`
+  ADD CONSTRAINT `collection_ibfk_3` FOREIGN KEY (`owner`) REFERENCES `account` (`account_id`),
+  ADD CONSTRAINT `fk_available` FOREIGN KEY (`available`) REFERENCES `available` (`available_id`),
+  ADD CONSTRAINT `fk_collection_book_id` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_collection_owner` FOREIGN KEY (`owner`) REFERENCES `account` (`account_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `rent`
+--
+ALTER TABLE `rent`
+  ADD CONSTRAINT `rent_ibfk_1` FOREIGN KEY (`id_account_own`) REFERENCES `account` (`account_id`),
+  ADD CONSTRAINT `rent_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
+  ADD CONSTRAINT `rent_ibfk_3` FOREIGN KEY (`id_account`) REFERENCES `account` (`account_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
